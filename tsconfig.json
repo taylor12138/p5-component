@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@@/*": [".dumi/tmp/*"],
+      "p5-react-component": ["src"],
+      "p5-react-component/*": ["src/*", "*"]
+    }
+  },
+  "include": [".dumirc.ts", "src/**/*"]
+}
