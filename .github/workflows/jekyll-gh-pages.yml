@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # 设置 Node.js 版本，根据需要调整
+          node-version: '16'  # 设置 Node.js 版本
 
       - name: Install dependencies
         run: |
@@ -29,13 +29,13 @@ jobs:
           npm install
 
       - name: Build Dumi site
-        run: npm run dumi:build # 如果你使用的是默认配置，这将构建到 dist/ 目录
+        run: npm run docs:build  # 运行 Dumi 构建命令
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
         with:
-          name: dumi-dist
-          path: ./dist  # 上传 dist 目录
+          name: dumi-docs-dist
+          path: ./docs-dist  # 上传 docs-dist 目录
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
         run: |
           git checkout --orphan gh-pages  # 创建一个新的 gh-pages 分支
           git rm -rf .  # 删除现有文件
-          cp -r dist/* .  # 将构建的内容复制到根目录
-          git add .  # 添加到 Git
+          cp -r docs-dist/* .  # 将 docs-dist 目录中的文件复制到根目录
+          git add .  # 添加文件到 git
           git commit -m "Deploy Dumi site"
           git push origin gh-pages --force  # 强制推送到 gh-pages 分支
