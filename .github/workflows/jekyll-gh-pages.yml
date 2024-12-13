@@ -1,59 +1,27 @@
-name: Deploy Dumi to GitHub Pages
+name: github pages
 
 on:
   push:
     branches:
-      - main  # 当你推送到 main 分支时触发
-  workflow_dispatch: # 支持手动触发
-    inputs:
-      environment:
-        description: 'Environment'
-        required: true
-        default: 'production'
+      - main # default branch
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'  # 设置 Node.js 版本
-
-      - name: Install dependencies
-        run: |
-          npm install -g dumi
-          npm install
-
-      - name: Build Dumi site
-        run: npm run docs:build  # 运行 Dumi 构建命令
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: dumi-docs-dist
-          path: ./docs-dist  # 上传 docs-dist 目录
-
   deploy:
     runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Set up Git
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-
-      - name: Deploy to GitHub Pages
-        run: |
-          git checkout --orphan gh-pages  # 创建一个新的 gh-pages 分支
-          git rm -rf .  # 删除现有文件
-          cp -r docs-dist/* .  # 将 docs-dist 目录中的文件复制到根目录
-          git add .  # 添加文件到 git
-          git commit -m "Deploy Dumi site"
-          git push origin gh-pages --force  # 强制推送到 gh-pages 分支
+        with:
+          # 如果配置 themeConfig.lastUpdated 为 false，则不需要添加该参数以加快检出速度
+          fetch-depth: 0
+      - name: Install dependencies
+        run: npm install
+      - name: Build with dumi
+        # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
+        run: npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 文档目录，如果是 react 模板需要修改为 docs-dist
+          publish_dir: ./dist
