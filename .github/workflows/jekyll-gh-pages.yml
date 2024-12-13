@@ -48,3 +48,4 @@ jobs:
             with:
               branch: build # 打包的内容放到build分支下
               folder: dist
+              token: ${{ secrets.GITHUB_TOKEN }}  # 明确指定 token
