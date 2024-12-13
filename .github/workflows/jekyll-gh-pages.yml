@@ -26,26 +26,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./dist/
-          destination: ./_site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          # 拉代码
+          - name: Checkout code
+            uses: actions/checkout@v1
 
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          # 下载node，我这里指定了15.x，这个版本可随意，高于dumi规定的node版本即可
+          - name: Use Node.js
+            uses: actions/setup-node@v1
+            with:
+              node-version: 15.x
+
+          # 打包代码
+          - name: Build Project
+            run: |
+              npm install
+              npm run build
+
+          # 部署到github
+          - name: Deploy to Github
+            uses: JamesIves/github-pages-deploy-action@4.0.0
+            with:
+              branch: build # 打包的内容放到build分支下
+              folder: dist
