@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkp5_react_component=self.webpackChunkp5_react_component||[]).push([[904],{11171:function(_,o,n){n.r(o),n.d(o,{demos:function(){return e}});var c=n(67294),t=n(68537),e={}},51446:function(_,o,n){n.r(o),n.d(o,{texts:function(){return t}});var c=n(68537);const t=[]}}]);
