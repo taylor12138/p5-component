@@ -1,3 +1,7 @@
+---
+nav: 怪盗组件
+---
+
 # Loading
 
 ## 怪盗loading加载动效

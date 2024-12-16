@@ -18,5 +18,3 @@ features:
     emoji: 🚀
     description: Put ! description here
 ---
-
-p5-react-component
