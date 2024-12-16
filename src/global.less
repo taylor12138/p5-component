@@ -1,4 +1,6 @@
 @color-gray: #808080;
+@color-white: #fff;
+@color-black: #000;
 
 @font-face {
     font-family: "p5-Bold";
@@ -148,4 +150,12 @@
         background-color: #ff0022;
         animation: bgRed 1s ease-out infinite;
     }
+}
+
+.p5-text{
+    font-family: 'p5-Bold', serif, 'HanHei SC', 'PingFang SC',
+    'Helvetica Neue', Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    text-shadow: 0 1px @color-white, 1px 0 @color-white, -1px 0 @color-white, 0 -1px @color-white;
 }

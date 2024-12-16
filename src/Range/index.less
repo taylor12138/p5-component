@@ -1,0 +1,42 @@
+@import "../global.less";
+
+.p5-slider-thumb(@url, @rotate) {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-image: @url;
+    background-size: cover;
+    transform: rotate(@rotate);
+}
+
+.p5-range { 
+    position: relative;
+    
+    .p5-slider-icon {
+        position: absolute;
+        min-width: 28px;
+        text-align: center;
+        background-color: @color-black;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+
+    .p5-slider-progress {
+        appearance: none;
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        height: 2px;
+        border-radius: 1px;
+        background-color: @color-white;
+    }
+
+    .p5-slider-progress-static::-webkit-slider-thumb {
+        .p5-slider-thumb(url(./icon-star-white.png), 60deg);
+    }
+    
+    .p5-slider-progress-hover::-webkit-slider-thumb {
+        .p5-slider-thumb(url(./icon-star-black.png), 90deg);
+    
+    }
+}
