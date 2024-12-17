@@ -5,39 +5,5 @@
 
 A react library developed with dumi
 
-## Usage
-
-TODO
-
-## Options
-
-TODO
-
-## Development
-
-```bash
-# install dependencies
-$ pnpm install
-
-# develop library by docs demo
-$ pnpm start
-
-# build library source code
-$ pnpm run build
-
-# build library source code in watch mode
-$ pnpm run build:watch
-
-# build docs
-$ pnpm run docs:build
-
-# Locally preview the production build.
-$ pnpm run docs:preview
-
-# check your project for potential problems
-$ pnpm run doctor
-```
-
-## LICENSE
-
-MIT
+## 预览地址
+最新的代码走action自动化部署，组件使用详情看 [github page](https://taylor12138.github.io/p5-component)
