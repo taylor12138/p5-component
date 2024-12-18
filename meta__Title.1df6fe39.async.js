@@ -1,0 +1,7 @@
+"use strict";(self.webpackChunkp5_react_component=self.webpackChunkp5_react_component||[]).push([[707],{76672:function(c,r,n){n.r(r),n.d(r,{demos:function(){return E}});var s=n(17061),t=n.n(s),d=n(17156),u=n.n(d),a=n(67294),f=n(70366),i=n(78569),E={"title-demo-0":{component:a.memo(a.lazy(u()(t()().mark(function l(){var _,m;return t()().wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,Promise.resolve().then(n.bind(n,78569));case 2:return _=e.sent,m=_.Title,e.abrupt("return",{default:function(){return a.createElement(m,{content:"\u6211\u662F\u602A\u76D7\uFF0C\u8FD9\u662F\u6211\u7684\u9884\u544A\u51FD\uFF0C\u8C22\u8C22"})}});case 5:case"end":return e.stop()}},l)})))),asset:{type:"BLOCK",id:"title-demo-0",refAtomIds:["Title"],dependencies:{"index.jsx":{type:"FILE",value:`import { Title } from 'p5-react-component';
+
+export default () => {
+    return (
+        <Title content="\u6211\u662F\u602A\u76D7\uFF0C\u8FD9\u662F\u6211\u7684\u9884\u544A\u51FD\uFF0C\u8C22\u8C22" />
+    )
+}`},"p5-react-component":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{"p5-react-component":i},renderOpts:{compile:function(){var l=u()(t()().mark(function m(){var p,e=arguments;return t()().wrap(function(o){for(;;)switch(o.prev=o.next){case 0:return o.next=2,n.e(335).then(n.bind(n,37335));case 2:return o.abrupt("return",(p=o.sent).default.apply(p,e));case 3:case"end":return o.stop()}},m)}));function _(){return l.apply(this,arguments)}return _}()}}}},38233:function(c,r,n){n.r(r),n.d(r,{texts:function(){return t}});var s=n(70366);const t=[]}}]);
