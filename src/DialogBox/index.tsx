@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React, { DOMAttributes, useMemo } from 'react';
+import React, { DOMAttributes, useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Title from '../Title';
 import akechi from './assets/akechi.png';
@@ -96,14 +96,22 @@ function DialogBox({ top, left, character, content, handleClose }: Props) {
       default:
         return sumire;
     }
-  }, []);
+  }, [character]);
+
+  const [currentLeft, setCurrentLeft] = useState(0)
+  useEffect(() => {
+    setTimeout(() => {
+        setCurrentLeft(left)
+    }, 0)
+  }, [left])
+  
 
   const chineseName = character_data.find(item => item.eng === character)?.chinese || ''
 
   return (
     <div
       className="p5-noti-ctn"
-      style={{ top: top + 'px', left: left + 'px' }}
+      style={{ top: top + 'px', left: currentLeft + 'px' }}
       onClick={handleClose}
     >
       <div className="p5-noti-sub-ctn">
