@@ -29,11 +29,13 @@ const default_config = ({
     step: 2
 })
 
+let init = false;
 const initImgList = () => {
     const canvas:HTMLCanvasElement | null = document.querySelector('#p5-loading-crowd');
-    if(!canvas) {
+    if(!canvas || init) {
         return;
     }
+    init = true;
     const width = canvas.width;
     for (let i = 0; i < img_num * 2; i++) {
         const img = crowd_imgs[i % img_num]
@@ -132,9 +134,11 @@ const render = () => {
     ctx.restore()
 }
 
+let animation_idx: any = null
+
 const update = () => {
     render()
-    requestAnimationFrame(update)
+    animation_idx = requestAnimationFrame(update)
 }
 
 export default function Loading({
@@ -150,6 +154,11 @@ export default function Loading({
     useEffect(() => {
         initImgList()
         update()
+        return () => {
+            if(animation_idx) {
+                cancelAnimationFrame(animation_idx)
+            }
+        }
     }, [])
     
   return (
